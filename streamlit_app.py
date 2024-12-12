@@ -23,7 +23,7 @@ st.title('Gimotac\'s Games')
 data = load_steam_data()
 
 with st.sidebar:
-    input_game = st.text_input('Enter a game title:')
+    input_game = st.text_input('Enter a game title (Try Portal!):')
     n_games = st.radio('Top ___ Games', [5,10,20])
     input_device = st.segmented_control("Filter played games by device", ['All', 'Windows', 'Steam Deck'])
 
