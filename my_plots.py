@@ -13,9 +13,12 @@ def top_games_plot(df, num_games=5, device='All'):
 
     topgames = df.sort_values(sort_by, ascending=False)
     
-    fig = px.bar(topgames, x='Title', y=f'Game Time on {device}')
+    fig = px.bar(topgames, x='name', y=sort_by)
 
     return fig
+
+# top_games_plot(df=pd.read_csv('steam_data.csv'))
+
 
 def single_game_info(df, game="Portal"):
     game_data = df[df['name'] == game].copy()
