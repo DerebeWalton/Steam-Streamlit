@@ -27,7 +27,7 @@ with st.sidebar:
     n_games = st.radio('Top ___ Games', [5,10,20])
     input_device = st.segmented_control("Filter played games by device", ['All', 'Windows', 'Steam Deck'])
 
-tab1, tab2 = st.tabs(['Full Library', 'Individual Game'])
+tab1, tab2, tab3 = st.tabs(['Full Library', 'Individual Game', 'Data'])
 
 with tab1:
     fig1 = top_games_plot(data, n_games, input_device)
@@ -46,5 +46,11 @@ with tab2:
 
     expander = st.expander("Note on data")
     expander.write('''
-                   Some games may reflect no playtime on one device or another, or even not playtime at all due to much of the game library not having been played.
+                   Some games may reflect no playtime on one device or another, or even no playtime at all due to much of the game library not having been played.
                    ''')
+
+with tab3:
+    st.write('''
+             For convenience, here is the dataset we are using
+             ''')
+    st.dataframe(data)
