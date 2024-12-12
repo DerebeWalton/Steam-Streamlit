@@ -11,7 +11,7 @@ def top_games_plot(df, num_games=5, device='All'):
     elif device == "Steam Deck":
         sort_by = 'playtime_deck_forever'
 
-    topgames = df.sort_values(sort_by, ascending=False)
+    topgames = df.sort_values(sort_by, ascending=False).head(num_games)
     
     fig = px.bar(topgames, x='name', y=sort_by)
 
