@@ -49,7 +49,7 @@ def single_game_plot(df, game="Portal"):
     print(device_time)
     device_labels = ["Windows", "Steam Deck", 'Unknown']
 
-    fig = px.pie(values=device_time, labels=device_labels, title=f'Proportions of Device Playtime for {game}')
+    fig = px.pie(values=device_time, names=device_labels, title=f'Proportions of Device Playtime for {game}')
 
     return fig
 
