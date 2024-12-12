@@ -39,7 +39,7 @@ with tab1:
 
 with tab2:
     fig2 = single_game_info(df=data, game=input_game)
-    st.plotly_chart(fig2)
+    st.dataframe(fig2)
 
     fig3 = single_game_plot(df=data, game=input_game)
     st.plotly_chart(fig3)
