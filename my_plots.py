@@ -22,14 +22,28 @@ def top_games_plot(df, num_games=5, device='All'):
 
 def single_game_info(df, game="Portal"):
     game_data = df[df['name'] == game].copy()
+    
     appid = game_data['appid']
     total_playtime = game_data['playtime_forever']
+    deck_playtime = game_data['playtime_deck_forever']
+    windows_playtime = game_data['playtime_windows_forever']
 
     output = pd.DataFrame({
         "Game Title": game,
         "Steam appID": appid,
-        "Total Playtime": total_playtime
+        "Total Playtime": total_playtime,
+        "Steam Deck Playtime": deck_playtime,
+        "Windows Playtime": windows_playtime
     })
 
     return output
 
+def single_game_plot(df, game="Portal"):
+    game_data = df[df['name'] == game].copy()
+
+    device_time = [game_data['playtime_windows_forever', game_data['playtime_deck_forever']]]
+    device_labels = ["Windows", "Steam Deck"]
+
+    fig = px.pie(device_time, labels=device_labels, autopct='%1.1f%%', title=f'Proportions of Devices Playtime for {game}')
+
+    return fig

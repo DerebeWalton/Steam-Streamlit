@@ -32,6 +32,19 @@ tab1, tab2 = st.tabs(['Full Library', 'Individual Game'])
 with tab1:
     fig1 = top_games_plot(data, n_games, input_device)
     st.plotly_chart(fig1)
+    expander = st.expander("Chart Explanation")
+    expander.write('''
+                   The chart above shows the top played games on the account given a device. We sort from highest to lowest minutes played on each device.
+                   ''')
 
 with tab2:
-    game_data = data[data['name'] == input_game].copy()
+    fig2 = single_game_info(df=data, game=input_game)
+    st.plotly_chart(fig2)
+
+    fig3 = single_game_plot(df=data, game=input_game)
+    st.plotly_chart(fig3)
+
+    expander = st.expander("Note on data")
+    expander.write('''
+                   Some games may reflect no playtime on one device or another, or even not playtime at all due to much of the game library not having been played.
+                   ''')
