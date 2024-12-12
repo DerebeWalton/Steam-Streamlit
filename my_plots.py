@@ -40,11 +40,11 @@ def single_game_info(df, game="Portal"):
 def single_game_plot(df, game="Portal"):
     game_data = df[df['name'] == game].copy()
 
-    device_time = [game_data['playtime_windows_forever'], game_data['playtime_deck_forever']]
+    device_time = [game_data['playtime_windows_forever'].values[0], game_data['playtime_deck_forever'].values[0]]
     device_labels = ["Windows", "Steam Deck"]
 
     fig = px.pie(device_time, labels=device_labels, title=f'Proportions of Devices Playtime for {game}')
 
     return fig
 
-single_game_plot(df=pd.read_csv('steam_data.csv'), game='Portal 2')
+#single_game_plot(df=pd.read_csv('steam_data.csv'), game='Magicka')
